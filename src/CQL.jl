@@ -117,8 +117,7 @@ type Timestamp
   milliseconds::Int64
 end
 
-const timeOffset = time(Libc.strptime("%F %T %z %Z",
-                                 "1970-01-01 00:00:00 +0000 UTC"));
+const timeOffset = time(Libc.strptime("%F %T %z %Z","1970-01-01 00:00:00 +0000 IST"));
 
 function Timestamp(str::AbstractString)
   Timestamp(1000 * int64(time(Libc.strptime("%F %T", str)) + timeOffset))
